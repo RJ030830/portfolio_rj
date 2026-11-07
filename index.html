@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.className+=' js'</script>
+<title>Renato Junior | Analista de dados e desenvolvedor web</title>
+<meta name="description" content="Portfólio de Renato Junior: projetos de análise de dados, engenharia de dados e desenvolvimento web (front-end e back-end).">
+<meta name="keywords" content="analista de dados, engenheiro de dados, desenvolvedor web, front-end, back-end, SQL, Python, portfólio">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Renato Junior | Analista de dados e desenvolvedor web">
+<meta property="og:description" content="Projetos de dados e web, com código aberto no GitHub.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Renato Junior",
+  "jobTitle": "Analista de dados e desenvolvedor web",
+  "sameAs": ["https://github.com/RJ030830", "https://www.linkedin.com/in/renato-junior-data-analyst/"]
+}
+</script>
+<style>
+:root{
+  --bg:#f8f9fa;
+  --surface:#ffffff;
+  --ink:#14202b;
+  --ink-soft:#56636f;
+  --line:#e2e6ea;
+  --accent:#0f5c6e;
+  --accent-soft:#e3f0f3;
+  --radius:6px;
+  --font:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.container{width:100%;max-width:960px;margin:0 auto;padding:0 20px}
+section{padding:56px 0}
+h1,h2,h3{line-height:1.15;font-weight:700;letter-spacing:-0.02em}
+h2{font-size:1.5rem;margin-bottom:24px}
+p{max-width:62ch}
+
+/* navbar */
+.nav{position:sticky;top:0;z-index:50;background:rgba(248,249,250,.94);border-bottom:1px solid transparent;transition:border-color .25s ease}
+.nav.scrolled{border-color:var(--line)}
+.nav .container{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font-weight:700;text-decoration:none;letter-spacing:-0.01em}
+.menu-btn{background:none;border:1px solid var(--line);border-radius:var(--radius);width:44px;height:44px;cursor:pointer;color:var(--ink);font:inherit}
+.links{display:none;position:absolute;top:60px;left:0;right:0;background:var(--surface);border-bottom:1px solid var(--line);padding:8px 20px 16px}
+.links.open{display:block}
+.links a{display:block;padding:12px 0;text-decoration:none;color:var(--ink-soft);font-weight:500}
+.links a:hover{color:var(--accent)}
+
+/* hero */
+.hero{padding:72px 0 64px}
+.hero h1{font-size:clamp(2.25rem,8vw,3.5rem);max-width:15ch;margin-bottom:20px}
+.hero p{color:var(--ink-soft);font-size:1.125rem;margin-bottom:28px}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:var(--radius);font-weight:500;text-decoration:none;border:1px solid var(--ink);transition:background .2s ease,color .2s ease}
+.btn-main{background:var(--ink);color:var(--surface)}
+.btn-main:hover{background:var(--accent);border-color:var(--accent)}
+.btn-alt{background:transparent;color:var(--ink)}
+.btn-alt:hover{background:var(--ink);color:var(--surface)}
+
+/* projetos */
+.filters{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.chip{min-height:44px;padding:0 16px;background:transparent;border:1px solid var(--line);border-radius:999px;font:inherit;font-weight:500;color:var(--ink-soft);cursor:pointer}
+.chip:hover{border-color:var(--ink-soft)}
+.chip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.proj{padding:24px 0;border-top:1px solid var(--line)}
+.proj:last-child{border-bottom:1px solid var(--line)}
+.proj[hidden]{display:none}
+.proj h3{font-size:1.25rem;margin-bottom:4px}
+.kind{font-size:.875rem;color:var(--accent);font-weight:500;margin-bottom:10px}
+.proj p{color:var(--ink-soft);margin-bottom:10px}
+.stack{font-size:.875rem;color:var(--ink-soft);margin-bottom:12px}
+.proj a.go{font-weight:500;color:var(--accent);text-decoration-thickness:1px;text-underline-offset:4px}
+.empty{padding:24px 0;color:var(--ink-soft)}
+
+/* sobre */
+.about-grid{display:grid;gap:32px}
+.about p+p{margin-top:14px}
+.about p{color:var(--ink-soft)}
+.skills dt{font-weight:700;margin-bottom:4px}
+.skills dd{color:var(--ink-soft);margin-bottom:18px}
+
+/* contato */
+.contact p{color:var(--ink-soft);margin-bottom:20px}
+
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--ink-soft);font-size:.9375rem}
+
+/* animações e interações */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:60}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hero-grid{display:grid;gap:32px}
+.hero .role{font-size:1rem;font-weight:500;color:var(--accent);margin-bottom:12px}
+.caret{display:inline-block;width:2px;height:1em;background:var(--accent);margin-left:2px;vertical-align:-.12em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.enter{animation:up .7s ease both;animation-delay:var(--d,0s)}
+.photo{position:relative;width:100%;max-width:240px;aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden;background:var(--accent-soft)}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo .ini{display:none;position:absolute;inset:0;align-items:center;justify-content:center;font-size:3rem;font-weight:700;color:var(--accent)}
+.photo.nophoto img{display:none}
+.photo.nophoto .ini{display:flex}
+html.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+html.js .reveal.in{opacity:1;transform:none}
+.links a.active{color:var(--accent)}
+.btn{position:relative;overflow:hidden}
+.ripple{position:absolute;border-radius:50%;background:currentColor;opacity:.3;transform:scale(0);animation:rip .6s ease-out forwards;pointer-events:none}
+@keyframes rip{to{transform:scale(2.5);opacity:0}}
+.row-actions{display:flex;flex-wrap:wrap;align-items:center;gap:24px}
+.more-btn{min-height:44px;background:none;border:0;padding:0;font:inherit;font-weight:500;color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;cursor:pointer}
+.more-btn:hover{color:var(--accent)}
+.more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
+.more>div{overflow:hidden;visibility:hidden;transition:visibility .3s}
+.more.open{grid-template-rows:1fr}
+.more.open>div{visibility:visible}
+.more p{margin:8px 0 0}
+.topbtn{position:fixed;right:16px;bottom:16px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s ease}
+.topbtn.show{opacity:1;pointer-events:auto}
+.topbtn:hover{border-color:var(--accent);color:var(--accent)}
+
+@media (min-width:768px){
+  .container{padding:0 32px}
+  section{padding:80px 0}
+  .menu-btn{display:none}
+  .links{display:flex;position:static;background:none;border:0;padding:0;gap:28px}
+  .links a{padding:0}
+  .proj{display:grid;grid-template-columns:1fr 1.4fr;gap:32px}
+  .about-grid{grid-template-columns:1.3fr 1fr;gap:56px}
+  .hero-grid{grid-template-columns:1.4fr 1fr;align-items:center;gap:56px}
+  .photo{margin-left:auto;max-width:320px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}html.js .reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="container">
+    <a href="#inicio" class="brand">Renato Junior</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="links">Menu</button>
+    <nav class="links" id="links" aria-label="Principal">
+      <a href="#projetos">Projetos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="container hero-grid">
+      <div>
+        <p class="role enter"><span class="sr">Sou analista de dados, engenheiro de dados e desenvolvedor web.</span><span aria-hidden="true">Sou </span><span id="typed" aria-hidden="true"></span><span class="caret" aria-hidden="true"></span></p>
+        <h1 class="enter" style="--d:.12s">Transformo dados em decisões e ideias em sites.</h1>
+        <p class="enter" style="--d:.24s">Analista e engenheiro de dados que também desenvolve para a web, do front-end ao back-end. Aqui estão alguns dos meus projetos.</p>
+        <div class="actions enter" style="--d:.36s">
+          <a class="btn btn-main" href="#projetos">Ver projetos</a>
+          <a class="btn btn-alt" href="#contato">Falar comigo</a>
+        </div>
+      </div>
+      <figure class="photo enter" style="--d:.2s">
+        <img src="foto.jpeg" alt="Foto de Renato Junior" width="400" height="500" onerror="this.parentNode.classList.add('nophoto')">
+        <span class="ini" aria-hidden="true">RJ</span>
+      </figure>
+    </div>
+  </section>
+
+  <section id="projetos">
+    <div class="container">
+      <h2>Projetos</h2>
+      <div class="filters" role="group" aria-label="Filtrar projetos">
+        <button class="chip" data-f="todos" aria-pressed="true">Todos</button>
+        <button class="chip" data-f="dados" aria-pressed="false">Dados</button>
+        <button class="chip" data-f="web" aria-pressed="false">Web</button>
+      </div>
+      <div id="lista">
+        <article class="proj" data-t="dados">
+          <div>
+            <h3>Análise do Football Manager 2023</h3>
+            <p class="kind">Engenharia de dados (ETL)</p>
+          </div>
+          <div>
+            <p>Pipeline de ETL sobre os dados do Football Manager 2023: extração, tratamento e preparação para análise.</p>
+            <p class="stack">Python, SQL</p>
+            <div class="row-actions">
+              <button class="more-btn" type="button" aria-expanded="false" aria-controls="d0">Ver detalhes</button>
+              <a class="go" href="https://github.com/RJ030830/Projeto_Analise_FootballManager2023" target="_blank" rel="noopener" aria-label="Ver o projeto Análise do Football Manager 2023 no GitHub">Ver no GitHub</a>
+            </div>
+            <div class="more" id="d0"><div><p>Extraí os dados brutos, tratei inconsistências e preparei as tabelas finais para consulta e análise.</p></div></div>
+          </div>
+        </article>
+        <article class="proj" data-t="dados">
+          <div>
+            <h3>Análise de churn</h3>
+            <p class="kind">Análise de dados</p>
+          </div>
+          <div>
+            <p>Análise do cancelamento de clientes para identificar padrões e fatores que mais influenciam a saída.</p>
+            <p class="stack">Python, Pandas</p>
+            <div class="row-actions">
+              <button class="more-btn" type="button" aria-expanded="false" aria-controls="d1">Ver detalhes</button>
+              <a class="go" href="https://github.com/RJ030830/Analise_Churn" target="_blank" rel="noopener" aria-label="Ver o projeto Análise de churn no GitHub">Ver no GitHub</a>
+            </div>
+            <div class="more" id="d1"><div><p>Explorei o perfil dos clientes, comparei quem ficou e quem saiu e destaquei os fatores mais ligados ao cancelamento.</p></div></div>
+          </div>
+        </article>
+        <article class="proj" data-t="web">
+          <div>
+            <h3>Doce Algodão Ateliê</h3>
+            <p class="kind">Site criado</p>
+          </div>
+          <div>
+            <p>Site completo para um ateliê, publicado online e pensado para exibir os produtos e facilitar o contato.</p>
+            <p class="stack">HTML, CSS, JavaScript</p>
+            <div class="row-actions">
+              <button class="more-btn" type="button" aria-expanded="false" aria-controls="d2">Ver detalhes</button>
+              <a class="go" href="https://doce-algodao-atelie.vercel.app/" target="_blank" rel="noopener" aria-label="Ver o site Doce Algodão Ateliê">Ver o site</a>
+            </div>
+            <div class="more" id="d2"><div><p>Criei o layout, a navegação e as seções de produtos e contato, com publicação na Vercel.</p></div></div>
+          </div>
+        </article>
+        <article class="proj" data-t="web">
+          <div>
+            <h3>Landing page para clínica</h3>
+            <p class="kind">Landing page</p>
+          </div>
+          <div>
+            <p>Página de apresentação de uma clínica, responsiva e focada em levar o visitante ao contato.</p>
+            <p class="stack">HTML, CSS, JavaScript</p>
+            <div class="row-actions">
+              <button class="more-btn" type="button" aria-expanded="false" aria-controls="d3">Ver detalhes</button>
+              <a class="go" href="https://clinica-nine-teal.vercel.app/" target="_blank" rel="noopener" aria-label="Ver a landing page da clínica">Ver o site</a>
+            </div>
+            <div class="more" id="d3"><div><p>Estruturei a página para destacar os serviços e o contato, com foco em celular.</p></div></div>
+          </div>
+        </article>
+        <article class="proj" data-t="web">
+          <div>
+            <h3>Sistema de orçamento</h3>
+            <p class="kind">Estudo prático em JavaScript</p>
+          </div>
+          <div>
+            <p>Estudo prático de JavaScript com operações, interatividade do usuário e back-end, aplicado em um sistema de orçamento.</p>
+            <p class="stack">JavaScript</p>
+            <div class="row-actions">
+              <button class="more-btn" type="button" aria-expanded="false" aria-controls="d4">Ver detalhes</button>
+              <a class="go" href="https://orcamento-test.vercel.app/" target="_blank" rel="noopener" aria-label="Ver o site Sistema de orçamento">Ver o site</a>
+            </div>
+            <div class="more" id="d4"><div><p>Pratiquei cálculos e operações em JavaScript, a resposta da página às ações do usuário e a comunicação com o back-end.</p></div></div>
+          </div>
+        </article>
+      </div>
+      <p class="empty" id="vazio" hidden>Nenhum projeto nessa categoria ainda.</p>
+    </div>
+  </section>
+
+  <section id="sobre" class="about">
+    <div class="container about-grid">
+      <div>
+        <h2>Sobre</h2>
+        <p>Trabalho com dados e estudo desenvolvimento web para construir soluções completas, da coleta e análise até a interface que o usuário vê.</p>
+        <p>Estou em busca de oportunidades e aberto a projetos freelancer. Se o assunto é dados, web ou os dois juntos, vamos conversar.</p>
+      </div>
+      <dl class="skills">
+        <dt>Dados</dt>
+        <dd>SQL, Python, Pandas, ETL, Power BI</dd>
+        <dt>Front-end</dt>
+        <dd>HTML, CSS, JavaScript</dd>
+        <dt>Back-end</dt>
+        <dd>APIs REST, bancos de dados</dd>
+        <dt>Ferramentas</dt>
+        <dd>Google Workspace</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="contato" class="contact">
+    <div class="container">
+      <h2>Contato</h2>
+      <p>Prefere e-mail ou uma mensagem rápida? Escolha o canal que for mais cômodo para você.</p>
+      <div class="actions">
+        <a class="btn btn-main" href="mailto:renatosoareslouzadajr@gmail.com">Enviar e-mail</a>
+        <a class="btn btn-alt" href="https://www.linkedin.com/in/renato-junior-data-analyst/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-alt" href="https://github.com/RJ030830" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">© <span id="ano"></span> Renato Junior. Todos os direitos reservados.</div>
+</footer>
+<button class="topbtn" id="topBtn" type="button" aria-label="Voltar ao topo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var btn=document.getElementById('menuBtn');
+  var links=document.getElementById('links');
+
+  window.addEventListener('scroll',function(){
+    nav.classList.toggle('scrolled',window.scrollY>8);
+  },{passive:true});
+
+  btn.addEventListener('click',function(){
+    var open=links.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open);
+    btn.textContent=open?'Fechar':'Menu';
+  });
+  links.addEventListener('click',function(e){
+    if(e.target.tagName==='A'){
+      links.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+      btn.textContent='Menu';
+    }
+  });
+
+  var chips=document.querySelectorAll('.chip');
+  var projs=document.querySelectorAll('.proj');
+  var vazio=document.getElementById('vazio');
+  chips.forEach(function(c){
+    c.addEventListener('click',function(){
+      var f=c.getAttribute('data-f');
+      chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false');});
+      var n=0;
+      projs.forEach(function(p){
+        var show=f==='todos'||p.getAttribute('data-t')===f;
+        p.hidden=!show;
+        if(show)n++;
+      });
+      vazio.hidden=n>0;
+    });
+  });
+
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var bar=document.getElementById('progress');
+  var topBtn=document.getElementById('topBtn');
+  function onScroll(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(window.scrollY/max)*100:0)+'%';
+    topBtn.classList.toggle('show',window.scrollY>500);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+  topBtn.addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+  });
+
+  var tEl=document.getElementById('typed');
+  var words=['analista de dados','engenheiro de dados','desenvolvedor web'];
+  if(reduce){
+    tEl.textContent=words[0];
+  }else{
+    var wi=0,ci=0,del=false;
+    (function tick(){
+      var w=words[wi];
+      tEl.textContent=w.slice(0,ci);
+      var delay=del?35:75;
+      if(!del&&ci===w.length){del=true;delay=1500;}
+      else if(del&&ci===0){del=false;wi=(wi+1)%words.length;delay=400;}
+      else{ci+=del?-1:1;}
+      setTimeout(tick,delay);
+    })();
+  }
+
+  var rv=document.querySelectorAll('main section:not(.hero) h2,.proj,.skills,.about p,.contact p,.contact .actions');
+  rv.forEach(function(el,i){
+    el.classList.add('reveal');
+    if(el.classList.contains('proj'))el.style.transitionDelay=((i%4)*70)+'ms';
+  });
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+      });
+    },{threshold:.15});
+    rv.forEach(function(el){io.observe(el);});
+
+    var navLinks=document.querySelectorAll('.links a');
+    var so=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          navLinks.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);});
+        }
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    document.querySelectorAll('main section[id]').forEach(function(sec){so.observe(sec);});
+  }else{
+    rv.forEach(function(el){el.classList.add('in');});
+  }
+
+  document.querySelectorAll('.btn').forEach(function(b){
+    b.addEventListener('click',function(e){
+      if(reduce)return;
+      var r=b.getBoundingClientRect();
+      var d=Math.max(r.width,r.height);
+      var x=e.detail?e.clientX-r.left:r.width/2;
+      var y=e.detail?e.clientY-r.top:r.height/2;
+      var sp=document.createElement('span');
+      sp.className='ripple';
+      sp.style.width=sp.style.height=d+'px';
+      sp.style.left=(x-d/2)+'px';
+      sp.style.top=(y-d/2)+'px';
+      b.appendChild(sp);
+      setTimeout(function(){sp.remove();},600);
+    });
+  });
+
+  document.querySelectorAll('.more-btn').forEach(function(b){
+    b.addEventListener('click',function(){
+      var box=document.getElementById(b.getAttribute('aria-controls'));
+      var open=box.classList.toggle('open');
+      b.setAttribute('aria-expanded',open);
+      b.textContent=open?'Ocultar detalhes':'Ver detalhes';
+    });
+  });
+
+  document.getElementById('ano').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
